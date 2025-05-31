@@ -3,8 +3,11 @@ html,
 #root {
   min-height: 100vh;
   height: auto;
+  height: auto;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -76,6 +79,7 @@ html,
   margin-bottom: 0.5rem;
   padding: 0;
   background: #fff;
+  background: #fff;
   border-bottom: none;
 }
 
@@ -116,10 +120,11 @@ main {
 
 .upload-preview {
   margin: 1rem 0;
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 220px;
+  min-height: 160px;
   background: #f4f4f4;
   border-radius: 12px;
   border: 1px dashed #bbb;
@@ -127,7 +132,7 @@ main {
 
 .image-preview {
   max-width: 100%;
-  max-height: 400px;
+  max-height: 200px;
   border-radius: 8px;
 }
 
@@ -160,6 +165,7 @@ main {
 }
 
 .form-section {
+  margin-top: 1.2rem;
   margin-top: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -241,44 +247,6 @@ main {
   color: #888;
   font-size: 0.98em;
   background: #fff;
-}
-
-.message-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #f8fafd;
-  border: 1px solid #bcd0e5;
-  color: #213547;
-  border-radius: 8px;
-  padding: 1em 1.5em;
-  margin-bottom: 1.2em;
-  font-size: 1.05em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  position: relative;
-}
-
-.message-card.error {
-  background: #fff4f4;
-  border: 1px solid #f7bdbd;
-  color: #b71c1c;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 1.5em;
-  font-weight: bold;
-  cursor: pointer;
-  margin-left: 1em;
-  line-height: 1;
-  padding: 0 0.2em;
-  transition: color 0.2s;
-}
-
-.close-btn:hover {
-  color: #d32f2f;
 }
 
 @media (max-width: 600px) {
