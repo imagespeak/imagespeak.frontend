@@ -1,3 +1,25 @@
+# imagespeak.frontend
+
+## Description
+A tool that leverages AI to generate insightful captions and detailed descriptions from images, making visual content more accessible and meaningful.
+
+## Run Commands
+
+### Start development server
+```
+npm run dev
+```
+
+### Build for production
+```
+npm run build
+```
+
+### Preview production build
+```
+npm run preview
+```
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
