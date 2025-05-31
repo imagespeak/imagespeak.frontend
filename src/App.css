@@ -2,10 +2,11 @@ body,
 html,
 #root {
   min-height: 100vh;
-  height: 100vh;
+  height: auto;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #root {
@@ -63,8 +64,9 @@ html,
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-  padding: 2rem 2rem 3rem 2rem;
-  min-height: calc(100vh - 4rem);
+  padding: 1.2rem 1.2rem 1.5rem 1.2rem;
+  min-height: unset;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -76,7 +78,7 @@ html,
   align-items: center;
   margin-bottom: 0.5rem;
   padding: 0;
-  background: none;
+  background: #fff;
   border-bottom: none;
 }
 
@@ -116,11 +118,11 @@ main {
 }
 
 .upload-preview {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 220px;
+  min-height: 160px;
   background: #f4f4f4;
   border-radius: 12px;
   border: 1px dashed #bbb;
@@ -128,7 +130,7 @@ main {
 
 .image-preview {
   max-width: 100%;
-  max-height: 400px;
+  max-height: 200px;
   border-radius: 8px;
 }
 
@@ -161,7 +163,7 @@ main {
 }
 
 .form-section {
-  margin-top: 2.5rem;
+  margin-top: 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -233,6 +235,15 @@ main {
 
 .generate-btn:hover {
   background: #535bf2;
+}
+
+.footer {
+  margin-top: 1rem;
+  padding: 0.7rem 0 0.3rem 0;
+  text-align: center;
+  color: #888;
+  font-size: 0.98em;
+  background: #fff;
 }
 
 @media (max-width: 600px) {
