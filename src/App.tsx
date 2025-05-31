@@ -77,6 +77,9 @@ function App() {
           <button className="generate-btn">Generate</button>
         </section>
       </main>
+      <footer className="footer">
+        <div>Contact: info@imagespeak.ai | &copy; 2025 ImageSpeak</div>
+      </footer>
     </div>
   )
 }

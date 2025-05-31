@@ -3,7 +3,7 @@
 ## Description
 A tool that leverages AI to generate insightful captions and detailed descriptions from images, making visual content more accessible and meaningful.
 
-## Architecture Diagram
+## HLA Diagram
 
 ![High Level Architecture](architecture/hla.svg)
 
