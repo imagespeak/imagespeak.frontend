@@ -261,6 +261,12 @@ main {
   position: relative;
 }
 
+.message-card.error {
+  background: #fff4f4;
+  border: 1px solid #f7bdbd;
+  color: #b71c1c;
+}
+
 .close-btn {
   background: none;
   border: none;
