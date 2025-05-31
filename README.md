@@ -12,7 +12,7 @@ A tool that leverages AI to generate insightful captions and detailed descriptio
 ```mermaid
 sequenceDiagram
     participant User as user
-    participant Client as clientApp
+    participant Client as clientApp (SPA)
     participant Identity as Identity server
     participant API as Api gateway
 
