@@ -2,11 +2,10 @@ body,
 html,
 #root {
   min-height: 100vh;
-  height: auto;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 #root {
@@ -23,9 +22,11 @@ html,
   transition: filter 300ms;
 }
 
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -35,6 +36,7 @@ html,
   from {
     transform: rotate(0deg);
   }
+
 
   to {
     transform: rotate(360deg);
@@ -61,9 +63,8 @@ html,
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-  padding: 1.2rem 1.2rem 1.5rem 1.2rem;
-  min-height: unset;
-  height: auto;
+  padding: 2rem 2rem 3rem 2rem;
+  min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -75,7 +76,7 @@ html,
   align-items: center;
   margin-bottom: 0.5rem;
   padding: 0;
-  background: #fff;
+  background: none;
   border-bottom: none;
 }
 
@@ -115,11 +116,11 @@ main {
 }
 
 .upload-preview {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 160px;
+  min-height: 180px;
   background: #f4f4f4;
   border-radius: 12px;
   border: 1px dashed #bbb;
@@ -127,7 +128,7 @@ main {
 
 .image-preview {
   max-width: 100%;
-  max-height: 200px;
+  max-height: 220px;
   border-radius: 8px;
 }
 
@@ -160,7 +161,7 @@ main {
 }
 
 .form-section {
-  margin-top: 1.2rem;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -232,15 +233,6 @@ main {
 
 .generate-btn:hover {
   background: #535bf2;
-}
-
-.footer {
-  margin-top: 1rem;
-  padding: 0.7rem 0 0.3rem 0;
-  text-align: center;
-  color: #888;
-  font-size: 0.98em;
-  background: #fff;
 }
 
 @media (max-width: 600px) {
