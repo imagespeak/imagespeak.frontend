@@ -3,16 +3,21 @@
 ## Description
 A tool that leverages AI to generate insightful captions and detailed descriptions from images, making visual content more accessible and meaningful.
 
-## Architecture
+## Sequence Diagram
 
-![High Level Architecture](architecture/hla.svg)
+```mermaid
+sequenceDiagram
+    participant User as user
+    participant Client as clientApp
+    participant Identity as Identity server
+    participant API as Api gateway
 
-### Flow
-- **user → clientApp**
-- **clientApp → Identity server**: login credential handles, used authorization code flow
-- **Identity server → clientApp**: exchange code and receive token from identity server
-- **clientApp → Api gateway**: Api request
-- **Api gateway → clientApp**: Api response
+    User->>Client: Initiate login
+    Client->>Identity: Send login credentials (authorization code flow)
+    Identity-->>Client: Exchange code, return token
+    Client->>API: API request with token
+    API-->>Client: API response
+```
 
 ## Run Commands
 
