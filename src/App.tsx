@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { useAuth } from 'react-oidc-context';
 import './App.css';
+import settings from './settings';
 
 function App() {
   const [image, setImage] = useState<string | null>(null);
@@ -39,24 +40,41 @@ const handleGenerate = async () => {
   }
   setUploading(true);
   try {
-    // Get presigned URL
-    const res = await fetch('https://webapi.com/v1/generate_presigned_url', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${auth.user.access_token}`,
-      },
-    });
-    if (!res.ok) throw new Error('Failed to get presigned URL');
-    const { url } = await res.json();
-    // Upload file to S3
+    // Get file and content type
     const file = fileInputRef.current?.files?.[0];
     if (!file) throw new Error('No file selected');
-    const uploadRes = await fetch(url, {
+    // Get presigned URL with contentType as query param
+    const res = await fetch(
+      `${settings.api.presignedUrl}?contentType=${encodeURIComponent(file.type)}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${auth.user.access_token}`,
+        },
+      }
+    );
+    if (!res.ok) throw new Error('Failed to get presigned URL');
+    const apiData = await res.json();
+    // Handle the case where uploadUrl is inside a JSON string in the 'body' property
+    let uploadUrl = '';
+    if (apiData.uploadUrl) {
+      uploadUrl = apiData.uploadUrl;
+    } else if (apiData.body) {
+      try {
+        const bodyObj = JSON.parse(apiData.body);
+        uploadUrl = bodyObj.uploadUrl;
+      } catch {
+        throw new Error('Invalid presigned URL response format');
+      }
+    }
+    if (!uploadUrl) throw new Error('Presigned URL not found in response');
+    // Upload file to S3
+    const uploadRes = await fetch(uploadUrl, {
       method: 'PUT',
       body: file,
       headers: {
-        'Content-Type': file.type,
-      },
+        'Content-Type': 'application/octet-stream'
+      }
     });
     if (!uploadRes.ok) throw new Error('Failed to upload image to S3');
     setMessage('Image uploaded successfully!');
@@ -69,9 +87,7 @@ const handleGenerate = async () => {
 
 // Cognito logout redirect
 const signOutRedirect = () => {
-  const clientId = "1c8stjovflaui8kgmmljpl3n1h";
-  const logoutUri = "http://localhost:5173/";
-  const cognitoDomain = "https://us-east-1acnhsxvnt.auth.us-east-1.amazoncognito.com";
+  const { clientId, logoutUri, cognitoDomain } = settings.cognito;
   window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
 };
 
@@ -121,7 +137,12 @@ if (auth.isAuthenticated) {
 return (
   <div className="app-container">
     {message && (
-      <div className="message-card">
+      <div className={`message-card${(
+        message === 'Please log in to generate a caption and description.' ||
+        message === 'Please select an image to upload.' ||
+        message === 'Failed to fetch' ||
+        message.toLowerCase().includes('error')
+      ) ? ' error' : ''}`}>
         <span>{message}</span>
         <button className="close-btn" onClick={() => setMessage(null)} title="Close">&times;</button>
       </div>
@@ -139,8 +160,7 @@ return (
             <button onClick={() => { handleLogout(); signOutRedirect(); }}>Logout</button>
           </>
         ) : (
-            <button onClick={() => auth.signinRedirect()}>Login</button>
-            <button onClick={() => auth.signinRedirect()}>Login</button>
+          <button onClick={() => auth.signinRedirect()}>Login</button>
         )}
       </div>
     </header>
