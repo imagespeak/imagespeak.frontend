@@ -61,7 +61,7 @@ function App() {
             onChange={handleImageChange}
           />
           <button className="upload-btn" onClick={handleUploadClick}>
-            Upload Image
+            Select Image
           </button>
           {imageName && <div className="image-name">{imageName}</div>}
         </section>
