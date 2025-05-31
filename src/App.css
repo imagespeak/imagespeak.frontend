@@ -23,9 +23,11 @@ html,
   transition: filter 300ms;
 }
 
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -35,6 +37,7 @@ html,
   from {
     transform: rotate(0deg);
   }
+
 
   to {
     transform: rotate(360deg);
@@ -241,6 +244,44 @@ main {
   color: #888;
   font-size: 0.98em;
   background: #fff;
+}
+
+.message-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafd;
+  border: 1px solid #bcd0e5;
+  color: #213547;
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  margin-bottom: 1.2em;
+  font-size: 1.05em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+
+.message-card.error {
+  background: #fff4f4;
+  border: 1px solid #f7bdbd;
+  color: #b71c1c;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 1em;
+  line-height: 1;
+  padding: 0 0.2em;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #d32f2f;
 }
 
 @media (max-width: 600px) {
